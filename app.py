@@ -6,18 +6,17 @@ import ssl
 
 app = flask.Flask(__name__, template_folder='templates')
 @app.route('/')
-def allowSelfSignedHttps(allowed):
-            if allowed and not os.environ.get('PYTHONHTTPSVERIFY', '') and getattr(ssl, '_create_unverified_context', None):
-                ssl._create_default_https_context = ssl._create_unverified_context
-
-allowSelfSignedHttps(True) # this line is needed if you use self-signed certificate in your scoring service.
-
 def main():
     if flask.request.method == 'GET':
         # Just render the initial form, to get input
         return(flask.render_template('main.html'))
     
     if flask.request.method == 'POST':
+        def allowSelfSignedHttps(allowed):
+            if allowed and not os.environ.get('PYTHONHTTPSVERIFY', '') and getattr(ssl, '_create_unverified_context', None):
+                ssl._create_default_https_context = ssl._create_unverified_context
+        allowSelfSignedHttps(True) # this line is needed if you use self-signed certificate in your scoring service.
+
         data = {
             "Inputs": {
                 "WebServiceInput0":
