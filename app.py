@@ -11,12 +11,6 @@ def allowSelfSignedHttps(allowed):
                 ssl._create_default_https_context = ssl._create_unverified_context
 
 allowSelfSignedHttps(True) # this line is needed if you use self-signed certificate in your scoring service.
-body = str.encode(json.dumps(data))
-url = 'http://f932e94a-b12c-48d6-9d0c-e92a88a9bc0a.centralus.azurecontainer.io/score'
-api_key = 'mSNspYilm0uDHa0mXAteCXvIyV0AvedH' # Replace this with the API key for the web service
-headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
-req = urllib.request.Request(url, body, headers)
-response = urllib.request.urlopen(req)
 
 def main():
     if flask.request.method == 'GET':
@@ -40,6 +34,12 @@ def main():
             "GlobalParameters": {
             }
         }
+        body = str.encode(json.dumps(data))
+        url = 'http://f932e94a-b12c-48d6-9d0c-e92a88a9bc0a.centralus.azurecontainer.io/score'
+        api_key = 'mSNspYilm0uDHa0mXAteCXvIyV0AvedH' # Replace this with the API key for the web service
+        headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
+        req = urllib.request.Request(url, body, headers)
+        response = urllib.request.urlopen(req)
         new=data['Inputs']['WebServiceInput0']
         new=dict(new[0])
         result = response.read()
