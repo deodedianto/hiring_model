@@ -1,5 +1,5 @@
 flask
-urllib.request
+urllib
 json
 os
 ssl
