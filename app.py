@@ -1,9 +1,9 @@
 import flask
-import urllib.request
+# import urllib.request
 import json
 import requests
-import os
-import ssl
+# import os
+# import ssl
 import sys
 import logging
 
@@ -17,7 +17,6 @@ def main():
         return(flask.render_template('main.html'))
     
     if flask.request.method == 'POST':
-
         # URL for the web service
         scoring_uri = 'http://f932e94a-b12c-48d6-9d0c-e92a88a9bc0a.centralus.azurecontainer.io/score'
         # If the service is authenticated, set the key or token
