@@ -3,8 +3,12 @@ import urllib.request
 import json
 import os
 import ssl
+import sys
+import logging
 
 app = flask.Flask(__name__, template_folder='templates')
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
 @app.route('/', methods=['GET', 'POST'])
 def main():
     if flask.request.method == 'GET':
