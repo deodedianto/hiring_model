@@ -5,7 +5,7 @@ import os
 import ssl
 
 app = flask.Flask(__name__, template_folder='templates')
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def main():
     if flask.request.method == 'GET':
         # Just render the initial form, to get input
