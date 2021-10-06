@@ -99,6 +99,6 @@ def main():
                                                      'Self Evaluation Score for the Job':data['Self Evaluation Score for the Job']},
                                      result=data['Should Hire Prediction'],
                                      )
-    return(flask.render_template('main.html'))
+    # return(flask.render_template('main.html'))
 if __name__ == '__main__':
     app.run()
