@@ -23,17 +23,22 @@ def main():
         key = 'mSNspYilm0uDHa0mXAteCXvIyV0AvedH'
 
         # Two sets of data to score, so we get two results back
+        Segment = flask.request.form['segment']
+        Stability = flask.request.form['stability']
+        Integrity = flask.request.form['integrity']
+        Coachability = flask.request.form['coachability']
+        Evaluation = flask.request.form['selfevaluation']
         data = {
             "Inputs": {
                 "WebServiceInput0":
                 [
                     {
                         'Should We Hire?': "false",
-                        'Segment': "Young & Searching",
-                        'Stability': "0.57",
-                        'Trustworthiness / Integrity': "0.69",
-                        'Coachability': "0.6",
-                        'Self Evaluation Score for the Job': "6",
+                        'Segment': Segment,
+                        'Stability': Stability,
+                        'Trustworthiness / Integrity': Integrity,
+                        'Coachability': Coachability,
+                        'Self Evaluation Score for the Job': Evaluation,
                     },
                 ],
             },
